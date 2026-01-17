@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>ModaNova KDS - Yönetici Paneli</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="dashboard-page">
+
+    <aside class="sidebar">
+        <h2>ModaNova</h2>
+        <nav>
+            <a href="#" class="active">📊 Dashboard</a>
+            <a href="login.html">🚪 Çıkış</a>
+        </nav>
+        <div class="sidebar-kds-box">
+        
+       
+    <div class="kds-divider"></div>
+<p class="kds-sub-text">
+    🚀 <strong>2026 Projeksiyonu:</strong> Mevcut büyüme ile yıl sonu ciro hedefi ₺5.2M olarak öngörülüyor.
+</p>
+<div class="kds-divider"></div>
+<p class="kds-sub-text" style="color: #ff7675;">
+    ⚠️ <strong>Stok Riski:</strong> 'Okula Dönüş' kampanyası öncesi kırtasiye grubu stokları kritik seviyede!
+</p>
+    </aside>
+   
+    <main class="main-content">
+        <header class="content-header">
+            <h1>Yönetici Karar Destek Paneli</h1>
+            <div class="filter-box">
+                <select id="yearFilter" onchange="updateChartByYear()">
+                    <option value="all">Tüm Yıllar (Karşılaştırmalı)</option>
+                    <option value="y2023">2023 Analizi</option>
+                    <option value="y2024">2024 Analizi</option>
+                    <option value="y2025">2025 Analizi</option>
+                </select>
+            </div>
+        </header>
+
+        <div class="stats-container">
+    <div class="stat-card">
+        <div class="icon">💰</div>
+        <h3>Toplam Ciro</h3>
+        <p id="totalRevenue">₺4.120.500</p>
+    </div>
+
+    <div class="stat-card">
+        <div class="icon">📦</div>
+        <h3>Sipariş Sayısı</h3>
+        <p id="totalOrders">1.842</p>
+    </div>
+
+    <div class="stat-card champion">
+        <div class="icon">🏆</div>
+        <h3>En Başarılı Kampanya</h3>
+        <p id="bestCampaignName">Efsane Cuma</p>
+        <span id="bestCampaignValue">₺1.410.000</span>
+    </div>
+
+    <div class="stat-card">
+        <div class="icon">👥</div>
+        <h3>Kayıtlı Müşteri</h3>
+        <p id="totalCustomers">500</p>
+    </div>
+</div>
+<div class="chart-card main-analysis">
+    <div class="chart-header">
+        <h3 id="impactHeader">🎯 Kampanya Etki Analizi (ROI)</h3>
+        <div class="forecast-badges">
+            <span id="growthBadge" class="badge trend-up">Ciro Artışı: +%42</span>
+            <span class="badge confidence">Verimlilik: Yüksek</span>
+        </div>
+    </div>
+    <div class="impact-container">
+        <div class="impact-box">
+            <span class="impact-label">Kampanya Öncesi (15 Gün)</span>
+            <div class="impact-bar-bg">
+                <div class="impact-bar pre" id="preBar" style="width: 60%;">₺750K</div>
+            </div>
+        </div>
+        <div class="impact-box">
+            <span class="impact-label">Kampanya Sonrası (15 Gün)</span>
+            <div class="impact-bar-bg">
+                <div class="impact-bar post" id="postBar" style="width: 92%;">₺1.14M</div>
+            </div>
+        </div>
+    </div>
+</div>
+  <div class="chart-card main-analysis">
+    <div class="chart-header">
+        <h3>📊 Yıllık Kampanya Karşılaştırma Analizi</h3>
+        <div class="header-actions">
+            <select id="yearFilter" onchange="updateChartByYear()">
+                <option value="all">Tüm Yılları Karşılaştır</option>
+                <option value="y2023">Sadece 2023</option>
+                <option value="y2024">Sadece 2024</option>
+                <option value="y2025">Sadece 2025</option>
+            </select>
+        </div>
+    </div>
+    <div class="main-chart-wrapper">
+        <canvas id="campaignChart"></canvas>
+    </div>
+</div>
+
+
+
+    <div class="side-charts-container">
+        <div class="chart-card secondary">
+            <h4>📍 Bölgesel Satış Dağılımı</h4>
+            <div class="secondary-chart-wrapper">
+                <canvas id="cityChart"></canvas>
+            </div>
+        </div>
+        <div class="chart-card secondary">
+            <h4>📈 Müşteri Artış Trendi</h4>
+            <div class="secondary-chart-wrapper">
+                <canvas id="trendChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="forecast-section chart-card">
+    <div class="chart-header">
+        <h3>🔮 12 Aylık Satış Projeksiyonu (2026)</h3>
+        <div class="forecast-badges">
+            <span class="badge trend-up">Tahminlenen Büyüme: +%18.4</span>
+            <span class="badge confidence">Güven Aralığı: %95</span>
+        </div>
+    </div>
+    <div class="main-chart-wrapper">
+        <canvas id="forecastChart"></canvas>
+    </div>
+</div>
+<div class="side-charts-container">
+    <div class="chart-card secondary alert-card">
+        <h4>⚠️ Kritik Operasyonel Riskler</h4>
+        <ul class="risk-list">
+            <li><strong>İade Oranı:</strong> %7.2 (Sektör ortalamasının üzerinde!)</li>
+            <li><strong>Stok Riski:</strong> Kışlık kaban stokları %85 tükendi.</li>
+            <li><strong>Lojistik:</strong> Marmara bölgesi teslimat süresi 3 güne çıktı.</li>
+        </ul>
+    </div>
+
+    <div class="chart-card secondary">
+        <h4>🏆 En Çok Satan Ürün Grupları</h4>
+        <table class="top-products-table">
+            <tr><th>Ürün</th><th>Satış Adedi</th><th>Trend</th></tr>
+            <tr><td>Oversize Tişört</td><td>1,240</td><td>▲ %12</td></tr>
+            <tr><td>Jean Pantolon</td><td>980</td><td>▲ %5</td></tr>
+            <tr><td>Keten Gömlek</td><td>750</td><td>▼ %2</td></tr>
+        </table>
+    </div>
+</div>
+</main>
+
+        
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModaNova KDS - Giriş</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <h1>ModaNova KDS</h1>
+            <p>Yönetici Karar Destek Sistemi</p>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Kullanıcı Adı</label>
+                    <input type="text" id="username" placeholder="admin" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Şifre</label>
+                    <input type="password" id="password" placeholder="123" required>
+                </div>
+                <button type="submit" class="btn-login">Giriş Yap</button>
+            </form>
+            
+<div class="auth-options">
+        <a href="#" class="secondary-link">Hesap Oluştur</a>
+        <span class="divider">|</span>
+        <a href="#" class="secondary-link delete-link">Hesabı Sil</a>
+    </div>
+<div id="actionPanel" style="display:none;">
+    <h3 id="actionTitle">İşlem</h3>
+    <input type="text" id="actionUser" placeholder="Kullanıcı Adı" class="input-style">
+    <input type="password" id="actionPass" placeholder="Şifre" class="input-style">
+    <div class="panel-buttons">
+        <button onclick="processAuthAction()" id="actionBtn" class="btn-login">Onayla</button>
+        <button onclick="document.getElementById('actionPanel').style.display='none'" class="btn-cancel">İptal</button>
+    </div>
+</div>
+            <div id="message"></div>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body { background: #f0f2f5; }
+
+/* Dashboard Layout */
+.dashboard-page { display: flex; min-height: 100vh; }
+
+.sidebar {
+    width: 240px;
+    background: #1e293b;
+    color: white;
+    padding: 25px;
+    position: fixed;
+    height: 100vh;
+}
+
+.sidebar h2 { margin-bottom: 30px; font-weight: 700; color: #38bdf8; }
+
+.sidebar nav a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.sidebar nav a.active, .sidebar nav a:hover {
+    background: #334155;
+    color: white;
+}
+
+/* Main Content */
+.main-content { margin-left: 240px; flex: 1; padding: 40px; }
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Widgets */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    border-top: 4px solid #3b82f6;
+}
+
+.stat-card.alert { border-top-color: #ef4444; }
+
+.stat-card h3 { font-size: 14px; color: #64748b; margin-bottom: 8px; }
+
+.stat-card p { font-size: 28px; font-weight: 700; color: #1e293b; }
+
+/* Cards & Charts */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.card h2 { font-size: 18px; margin-bottom: 20px; color: #334155; }
+
+/* Buttons & Selects */
+select {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 15px; color: #64748b; border-bottom: 2px solid #f1f5f9; }
+td { padding: 15px; border-bottom: 1px solid #f1f5f9; }
+.stat-card.champion {
+    border-top: 4px solid #f1c40f; /* Altın rengi */
+    background: linear-gradient(to bottom, #ffffff, #fffdf0);
+}
+.stat-card.champion h3 { color: #d4af37; }
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    flex: 1; /* Hepsine eşit genişlik verir */
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.stat-card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.stat-card.champion {
+    background: linear-gradient(135deg, #ffffff 0%, #fff9e6 100%);
+    border: 1px solid #f1c40f;
+}
+
+.stat-card.champion p {
+    color: #d4af37;
+}
+
+#bestCampaignValue {
+    font-size: 12px;
+    color: #27ae60;
+    display: block;
+    margin-top: 5px;
+}
+
+.icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Grafik Alanı */
+.chart-container {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    height: 450px;
+}
+/* Grafikleri Yan Yana Dizer */
+.charts-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.small-chart-card {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 320px; /* Sabit yükseklik, taşmayı önler */
+}
+
+.small-chart-card h4 {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px; /* Grafiklerin yüksekliğini kısıtladık */
+}
+
+.compact-select {
+    margin-top: 10px;
+    font-size: 11px;
+    padding: 2px 5px;
+}
+
+/* Üst Kartları da Küçültelim */
+.stats-container {
+    display: flex;
+    gap: 10px;
+}
+
+.stat-card {
+    padding: 10px !important;
+}
+
+.stat-card p {
+    font-size: 18px !important;
+}
+
+.stat-card h3 {
+    font-size: 11px !important;
+}
+/* Ana içerik alanı */
+.main-content {
+    margin-left: 260px;
+    padding: 30px;
+    background-color: #f0f2f5;
+}
+
+/* Grafik Kartı Genel Tasarımı */
+.chart-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+/* Üstteki Büyük Grafik Alanı */
+.main-canvas-wrapper {
+    height: 350px; /* Geniş ve ferah */
+    width: 100%;
+}
+
+/* Alttaki Küçük Grafikler İçin Izgara */
+.secondary-charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.secondary-canvas-wrapper {
+    height: 250px; /* Daha kompakt ama okunur */
+    width: 100%;
+}
+
+/* Başlıklar ve Filtre */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+h3, h4 {
+    color: #34495e;
+    margin: 0;
+}
+
+#yearFilter {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid #dcdde1;
+}
+/* İki grafiği yan yana hizalayan taşıyıcı */
+.side-by-side-charts {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Aradaki boşluk */
+    margin-top: 20px;
+}
+
+/* Her bir grafik kartının tasarımı */
+.compact-chart-card {
+    flex: 1; /* Eşit genişlik sağlar */
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    min-width: 0; /* Flexbox'ta taşmayı önlemek için kritik */
+}
+
+.compact-chart-card h4 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* Grafiklerin boyutunu kontrol eden iç kapsayıcı */
+.canvas-container {
+    position: relative;
+    height: 250px; /* Yüksekliği buradan sabitleyebilirsin */
+    width: 100%;
+}
+/* Ana Grafik Kartı */
+.main-analysis {
+    margin-bottom: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.main-chart-wrapper {
+    height: 350px; /* Üstteki grafik daha detaylı görünsün diye büyük */
+    width: 100%;
+}
+
+/* Alttaki Yan Yana Yapı */
+.side-charts-container {
+    display: flex;
+    gap: 20px;
+}
+
+.chart-card.secondary {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.secondary-chart-wrapper {
+    height: 250px; /* Alttaki grafikler daha kompakt */
+    width: 100%;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+/* Tüm Dashboard kutularını kapsayan genel kural */
+.chart-card {
+    background: white;
+    border: 1px solid #e1e8ed; /* İnce ve şık bir çerçeve */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    box-sizing: border-box; /* Padding'in genişliği bozmamasını sağlar */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Üstteki Büyük Panel */
+.main-analysis {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Alttaki Yan Yana Kapsayıcı */
+.side-charts-container {
+    display: flex;
+    gap: 20px; /* Aradaki boşluk */
+    width: 100%;
+    align-items: stretch; /* Her iki kutunun boyunu otomatik eşitler */
+}
+
+.chart-card.secondary {
+    flex: 1; /* %50 - %50 paylaşım */
+    margin-bottom: 0; /* Altta ekstra boşluk kalmasın */
+}
+
+/* Grafiklerin içindeki başlıkları eşitle */
+.chart-card h3, .chart-card h4 {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    color: #2c3e50;
+    border-bottom: 1px solid #f1f2f6; /* Başlık altına ince ayraç */
+    padding-bottom: 10px;
+}
+
+/* Yükseklik Sabitleme (Eşitlik burada sağlanıyor) */
+.main-chart-wrapper {
+    height: 350px;
+}
+
+.secondary-chart-wrapper {
+    height: 250px;
+}
+/* Ana içerik kapsayıcısı */
+.main-content {
+    margin-left: 260px; /* Sidebar genişliği ile aynı olmalı */
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Kartlar arasındaki dikey boşluk */
+    box-sizing: border-box;
+}
+
+/* Tüm kartlar için ortak genişlik ayarı */
+.chart-card {
+    width: 100%; /* Bulunduğu alanın tamamını kaplasın */
+    background: white;
+    border: 1px solid #e1e8ed;
+    border-radius: 12px;
+    padding: 20px;
+    box-sizing: border-box; /* Padding genişliği etkilemesin diye */
+}
+
+/* Alttaki iki kartı yan yana getiren kapsayıcı */
+.side-charts-container {
+    display: flex;
+    justify-content: space-between; /* İki kartın arasını açar */
+    gap: 20px; /* Üstteki gap ile aynı olmalı ki dikey-yatay uyum sağlansın */
+    width: 100%;
+}
+
+/* Yan yana duran kartların her biri */
+.chart-card.secondary {
+    flex: 1; /* %50 - %50 paylaşmalarını sağlar */
+    min-width: 0; /* İçerik taşmasını önler */
+}
+.main-content {
+    /* Sidebar'ın arkasında kalmaması için sol boşluk */
+    margin-left: 280px; 
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Paneller arası dikey boşluk */
+    /* Genişliğin taşmasını önler */
+    width: calc(100% - 280px); 
+    box-sizing: border-box;
+}
+.forecast-badges {
+    display: flex;
+    gap: 10px;
+}
+
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.trend-up { background: #dcfce7; color: #166534; }
+.confidence { background: #e0f2fe; color: #0369a1; }
+
+.forecast-section {
+    border-top: 4px solid #e67e22 !important; /* Tahmin rengi vurgusu */
+    margin-top: 20px;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column; /* İçerikleri dikey sıralar */
+    height: 100vh;
+    padding: 25px;
+    background: #1e293b;
+    position: fixed;
+    width: 260px;
+}
+
+/* Menü kısmını kapsayan nav etiketi */
+.sidebar nav {
+    flex-grow: 1; /* Menünün yukarıdaki tüm boşluğu kaplamasını sağlar */
+}
+
+/* AI Analiz Kutusunu en alta iten stil */
+.sidebar-kds-box {
+    margin-top: auto; /* Navigasyondan sonraki tüm boşluğu iterek en alta yerleşir */
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px; /* En alttan biraz boşluk bırakır */
+}
+/* Risk Listesi */
+.risk-list {
+    list-style: none;
+    padding: 0;
+}
+
+.risk-list li {
+    padding: 10px;
+    border-bottom: 1px solid #fee2e2;
+    font-size: 13px;
+    color: #4b5563;
+}
+
+.risk-list li strong { color: #ef4444; }
+
+/* Top Ürünler Tablosu */
+.top-products-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.top-products-table th {
+    text-align: left;
+    padding: 8px;
+    color: #64748b;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.top-products-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #f8fafc;
+}
+
+.top-products-table td:last-child {
+    font-weight: bold;
+    color: #22c55e;
+}
+
+/* Kırmızı Vurgulu Kart */
+.alert-card {
+    border-left: 5px solid #ef4444 !important;
+}
+.impact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.impact-box {
+    width: 100%;
+}
+
+.impact-label {
+    display: block;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.impact-bar-bg {
+    background: #f1f5f9;
+    height: 35px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.impact-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    transition: width 1s ease-in-out;
+}
+
+.impact-bar.pre { background: #94a3b8; } /* Gri - Öncesi */
+.impact-bar.post { background: linear-gradient(90deg, #3b82f6, #2ecc71); } /* Mavi-Yeşil - Sonrası */
